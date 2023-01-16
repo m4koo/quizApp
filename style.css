@@ -1,0 +1,54 @@
+:root{
+    --bg: #fdfaf0;
+    --navBg: #2a3559;
+    --cardBg: rgb(247, 247, 247);
+    --startBtn: #ed5c2e;
+}
+
+.bg-nav{
+    background-color: var(--navBg);
+}
+
+body{
+    margin: 0;
+    background-color: #fdfaf0 !important;
+    min-height: 100vh;
+}
+
+#main{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav{
+    border-top-left-radius: var(--bs-card-border-radius);
+    border-bottom-left-radius: var(--bs-card-border-radius);
+}
+
+#quizTabs{
+    width: 100%;
+}
+
+#quizTabs a span{
+    margin-left: 30%;
+}
+
+#quizTabs a{
+    color: rgb(170, 178, 205);
+    text-decoration: none;
+    border-left: rgba(255, 255, 255, 0) 6px solid;
+    margin-left: 1px;
+}
+
+#quizTabs a:hover{
+    color: white;
+    border-left: white 6px solid;
+}
+
+#logo{
+  width: 33%;
+  object-fit: contain;
+  margin-bottom: 5rem;
+}

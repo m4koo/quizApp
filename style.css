@@ -13,6 +13,7 @@ body{
     margin: 0;
     background-color: #fdfaf0 !important;
     min-height: 100vh;
+    font-family: 'Rubik', sans-serif !important;
 }
 
 #main{

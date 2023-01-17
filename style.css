@@ -16,6 +16,11 @@ body{
     font-family: 'Rubik', sans-serif !important;
 }
 
+h1{
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700 !important;
+}
+
 #main{
     height: 100vh;
     display: flex;
@@ -30,6 +35,7 @@ nav{
 
 #quizTabs{
     width: 100%;
+    
 }
 
 #quizTabs a span{
@@ -51,5 +57,24 @@ nav{
 #logo{
   width: 33%;
   object-fit: contain;
-  margin-bottom: 5rem;
+  /* margin-bottom: 5rem; */
+}
+
+#mainCard > *:not(a){
+    max-width: 60%;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+
+#mainCard > p,a{
+    font-family: 'PT-Sans', sans-serif;
+    font-size: 1.5rem;
+}
+
+#start-btn{
+    background-color: var(--startBtn);
+    bottom: 10%;
+    right: 10%;
+    height: 60px;
+    width: 240px;
 }

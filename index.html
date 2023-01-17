@@ -19,7 +19,7 @@
     <div class="" id="main">
         <div class="card flex-row h-75 w-75">
             <!-- navbar -->
-            <nav class="bg-nav d-flex flex-column align-items-center w-25 position-relative">
+            <nav class="bg-nav d-flex flex-column align-items-center position-relative">
                 <img src="img/logo.png" id="logo" class="pt-3">
                 <div class="d-flex flex-column gap-4 fs-3 position-absolute top-50 translate-middle-y" id="quizTabs">
                     <a href=""><span>HTML</span></a>
@@ -29,9 +29,26 @@
             </nav>
             <!-- navbar end -->
             <div class="card-body d-flex flex-column justify-content-center align-items-center position-relative" id="mainCard">
-                <h1>Welcome to the Awesome HTML Quiz</h1>
+                <!-- <h1>Welcome to the Awesome HTML Quiz</h1>
                 <p class="card-text">Ready for the Challenge?</p>
-                <a href="#" class="btn text-white position-absolute d-flex justify-content-center align-items-center" id="start-btn">Start Now</a>
+                <a href="#" class="btn text-white position-absolute d-flex justify-content-center align-items-center" id="start-btn" onclick="showQuestion()">Start Now</a> -->
+                <h2 class="position-absolute">Für was steht die Abkürzung HTML ?</h2>
+                <div class="d-flex gap-4 test">
+                    <span>A</span>
+                    <p>How To Make Lasagna</p>
+                </div>
+                <div class="d-flex gap-4 test">
+                    <span>B</span>
+                    <p>Hyper Text Markup Language</p>
+                </div>
+                <div class="d-flex gap-4 test">
+                    <span>C</span>
+                    <p>Hey Too Much Layout</p>
+                </div>
+                <div class="d-flex gap-4 test">
+                    <span>D</span>
+                    <p>Hieroglyphics, To Machine Legible</p>
+                </div>
             </div>
         </div>
     </div>

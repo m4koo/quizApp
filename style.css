@@ -5,8 +5,25 @@
     --startBtn: #ed5c2e;
 }
 
-.test{
-    min-width: 50%;
+.answer-choice{
+    min-width: 70%;
+    margin-bottom: 2rem;
+    padding: 10px;
+}
+
+.answer-choice:hover{
+    background-color: rgba(214, 214, 214, 0.496);
+    cursor: pointer;
+}
+
+.answer-choice > span{
+    width: 35px;
+    height: 35px;
+    background-color: rgb(214, 214, 214);
+}
+
+.answer-choice > p{
+    margin-bottom: 0 !important;
 }
 
 .bg-nav{

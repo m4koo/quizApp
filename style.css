@@ -17,8 +17,8 @@
 }
 
 .answer-choice > span{
-    width: 35px;
     height: 35px;
+    aspect-ratio: 1;
     background-color: rgb(214, 214, 214);
 }
 

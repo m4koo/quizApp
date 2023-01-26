@@ -64,6 +64,13 @@ function answerSelection(id){
         animWrong(selected);
         document.getElementById(rightAnswer).style.background = "rgb(197, 244, 163)"
     }
+    cancelSelection();
+}
+
+function cancelSelection(){
+    for (let i = 1; i <= 4; i++) {
+        document.getElementById(`answer_${i}`).onclick = null;
+    }
 }
 
 function animRight(selected){

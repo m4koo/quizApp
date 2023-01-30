@@ -87,8 +87,8 @@ nav{
   /* margin-bottom: 5rem; */
 }
 
-#mainCard > *:not(a){
-    max-width: 60%;
+#mainCard > *:not(a, #progress){
+    max-width: 70%;
     overflow-wrap: break-word;
     text-align: center;
 }
@@ -105,3 +105,34 @@ nav{
     height: 60px;
     width: 240px;
 }
+
+#progress{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+}
+
+/* #progess span, button{
+    width: 10%;
+} */
+
+#progress-container {
+    width: 70%;
+    height: 20px;
+    background-color: lightgray;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+  
+#progress-bar {
+    height: 100%;
+    background-color: blue;
+    width: 0%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: width 125ms ease-out;
+}
+  

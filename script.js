@@ -17,10 +17,10 @@ let htmlQuestions = [
     },
     {
         "question": "Mit welchem HTML Element erstellt man eine numerierte Liste?",
-        "answer_1": "<nl>",
-        "answer_2": "<ul>",
-        "answer_3": "<list>",
-        "answer_4": "<ol>",
+        "answer_1": '<nl>',
+        "answer_2": '<ul>',
+        "answer_3": '<list>',
+        "answer_4": '<ol>',
         "correct_answer": 4,
     },
     {
@@ -47,6 +47,7 @@ function showQuestion(){
     let card = document.getElementById('mainCard');
     card.innerHTML="";
     generateQuestionHTML(card);
+    progress();
 }
 
 function answerSelection(id){
@@ -65,6 +66,7 @@ function answerSelection(id){
         document.getElementById(rightAnswer).style.background = "rgb(197, 244, 163)"
     }
     cancelSelection();
+    changeButton();
 }
 
 function cancelSelection(){
@@ -101,29 +103,29 @@ function animWrong(selected){
 
 function generateQuestionHTML(id){
     id.innerHTML =`
-    <h2 class="mb-5 fw-bold">${htmlQuestions[currentQuestion]['question']}</h2>
+    <h2 class="mb-5 fw-bold">${escapeHtml(htmlQuestions[currentQuestion]['question'])}</h2>
     <div class="d-flex gap-4 answer-choice" id="answer_1" onclick="answerSelection('answer_1')">
         <span>A</span>
-        <p>${htmlQuestions[currentQuestion]['answer_1']}</p>
+        <p>${escapeHtml(htmlQuestions[currentQuestion]['answer_1'])}</p>
      </div>
     <div class="d-flex gap-4 answer-choice" id="answer_2" onclick="answerSelection('answer_2')">
         <span>B</span>
-        <p>${htmlQuestions[currentQuestion]['answer_2']}</p>
+        <p>${escapeHtml(htmlQuestions[currentQuestion]['answer_2'])}</p>
     </div>
     <div class="d-flex gap-4 answer-choice" id="answer_3" onclick="answerSelection('answer_3')">
         <span>C</span>
-        <p>${htmlQuestions[currentQuestion]['answer_3']}</p>
+        <p>${escapeHtml(htmlQuestions[currentQuestion]['answer_3'])}</p>
     </div>
     <div class="d-flex gap-4 answer-choice" id="answer_4" onclick="answerSelection('answer_4')">
         <span>D</span>
-        <p>${htmlQuestions[currentQuestion]['answer_4']}</p>
+        <p>${escapeHtml(htmlQuestions[currentQuestion]['answer_4'])}</p>
     </div>
     <div id="progress" class="d-flex justify-content-evenly align-items-center">
         <span class="text-secondary fs-5">${currentQuestion + 1} von ${htmlQuestions.length}</span>
         <div id="progress-container">
             <div id="progress-bar"></div>
         </div>
-        <button id="progress-button" class="btn btn-success" onclick="progress()">Next</button>
+        <button id="progress-button" class="btn btn-secondary">Next</button>
     </div>
     `
 }
@@ -141,3 +143,23 @@ function progress(){
     progressBar.style.width = `${currentProgress}%`;
 }
 
+function changeButton(){
+    let button = document.getElementById('progress-button');
+    button.classList.remove('btn-secondary');
+    button.classList.add('btn-success')
+    button.onclick = nextQuestion;
+}
+
+function nextQuestion(){
+    currentQuestion++;
+    showQuestion();
+}
+
+function escapeHtml(text) {
+    let map = {
+      '<': '&lt;',
+      '>': '&gt;'
+    };
+  
+    return text.replace(/[<>]/g, function(m) { return map[m]; });
+}

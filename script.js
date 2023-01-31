@@ -42,6 +42,7 @@ let htmlQuestions = [
 ];
 
 let currentQuestion = 0;
+let currentQuestionPack;
 
 function showQuestion(){
     let card = document.getElementById('mainCard');
@@ -54,7 +55,7 @@ let points = 0;
 
 function answerSelection(id){
     let selected = document.getElementById(id);
-    let rightAnswer = "answer_" + htmlQuestions[currentQuestion]['correct_answer']
+    let rightAnswer = "answer_" + currentQuestionPack[currentQuestion]['correct_answer']
     console.log(rightAnswer);
     // let answer = id.slice(-1);
     if (id == rightAnswer){
@@ -106,25 +107,25 @@ function animWrong(selected){
 
 function generateQuestionHTML(id){
     id.innerHTML =`
-    <h2 class="mb-5 fw-bold">${escapeHtml(htmlQuestions[currentQuestion]['question'])}</h2>
+    <h2 class="mb-5 fw-bold">${escapeHtml(currentQuestionPack[currentQuestion]['question'])}</h2>
     <div class="d-flex gap-4 answer-choice" id="answer_1" onclick="answerSelection('answer_1')">
         <span>A</span>
-        <p>${escapeHtml(htmlQuestions[currentQuestion]['answer_1'])}</p>
+        <p>${escapeHtml(currentQuestionPack[currentQuestion]['answer_1'])}</p>
      </div>
     <div class="d-flex gap-4 answer-choice" id="answer_2" onclick="answerSelection('answer_2')">
         <span>B</span>
-        <p>${escapeHtml(htmlQuestions[currentQuestion]['answer_2'])}</p>
+        <p>${escapeHtml(currentQuestionPack[currentQuestion]['answer_2'])}</p>
     </div>
     <div class="d-flex gap-4 answer-choice" id="answer_3" onclick="answerSelection('answer_3')">
         <span>C</span>
-        <p>${escapeHtml(htmlQuestions[currentQuestion]['answer_3'])}</p>
+        <p>${escapeHtml(currentQuestionPack[currentQuestion]['answer_3'])}</p>
     </div>
     <div class="d-flex gap-4 answer-choice" id="answer_4" onclick="answerSelection('answer_4')">
         <span>D</span>
-        <p>${escapeHtml(htmlQuestions[currentQuestion]['answer_4'])}</p>
+        <p>${escapeHtml(currentQuestionPack[currentQuestion]['answer_4'])}</p>
     </div>
     <div id="progress" class="d-flex justify-content-evenly align-items-center">
-        <span class="text-secondary fs-5">${currentQuestion + 1} von ${htmlQuestions.length}</span>
+        <span class="text-secondary fs-5">${currentQuestion + 1} von ${currentQuestionPack.length}</span>
         <div id="progress-container">
             <div id="progress-bar"></div>
         </div>
@@ -155,7 +156,7 @@ function changeButton(){
 
 function nextQuestion(){
     currentQuestion++;
-    if (currentQuestion == htmlQuestions.length){
+    if (currentQuestion == currentQuestionPack.length){
         generateFinalScreen();
     }else{
         showQuestion();
@@ -180,8 +181,127 @@ function generateFinalScreen(){
         </div>
         <div class="d-flex justify-content-between gap-3 fw-bold mb-3">
             <span class="text-orange">YOUR SCORE</span>
-            <p>${points}/${htmlQuestions.length}</p>
+            <p>${points}/${currentQuestionPack.length}</p>
         </div>
         <button id="replay" class="btn btn-primary">REPLAY</button>
     `;
+}
+
+
+let cssQuestions = [
+    {
+        "question": "Für was steht die Abkürzung 'CSS'?",
+        "answer_1": "Counter-Strike: Source",
+        "answer_2": "Cool Styling Stuff",
+        "answer_3": "Cascading Style Sheets",
+        "answer_4": "",
+        "correct_answer": 2,
+    },
+    {
+        "question": "Wer ist für die Web standards zuständig?",
+        "answer_1": "Mozilla",
+        "answer_2": "The World Wide Web Consortium (W3C)",
+        "answer_3": "Google",
+        "answer_4": "Microsoft",
+        "correct_answer": 2,
+    },
+    {
+        "question": "Mit welchem HTML Element erstellt man eine numerierte Liste?",
+        "answer_1": '<nl>',
+        "answer_2": '<ul>',
+        "answer_3": '<list>',
+        "answer_4": '<ol>',
+        "correct_answer": 4,
+    },
+    {
+        "question": "Wie öffnet man einen Link in einem neuen Tab?",
+        "answer_1": "<a href='url' target='_blank'>",
+        "answer_2": "<a href='url' target='new'>",
+        "answer_3": "<a href='url' target='new_tab'>",
+        "answer_4": "<a href='url' new>",
+        "correct_answer": 1,
+    },
+    {
+        "question": "Wie heißt der Erfinder von HTML?",
+        "answer_1": "Tim Berners-Lee",
+        "answer_2": "Jeff Bezoz",
+        "answer_3": "Brendan Eich",
+        "answer_4": "Bill Gates",
+        "correct_answer": 1,
+    },
+];
+
+let jsQuestions = [
+    {
+        "question": "Was is Javascript?",
+        "answer_1": "Counter-Strike: Source",
+        "answer_2": "Cool Styling Stuff",
+        "answer_3": "Cascading Style Sheets",
+        "answer_4": "",
+        "correct_answer": 2,
+    },
+    {
+        "question": "Wer ist für die Web standards zuständig?",
+        "answer_1": "Mozilla",
+        "answer_2": "The World Wide Web Consortium (W3C)",
+        "answer_3": "Google",
+        "answer_4": "Microsoft",
+        "correct_answer": 2,
+    },
+    {
+        "question": "Mit welchem HTML Element erstellt man eine numerierte Liste?",
+        "answer_1": '<nl>',
+        "answer_2": '<ul>',
+        "answer_3": '<list>',
+        "answer_4": '<ol>',
+        "correct_answer": 4,
+    },
+    {
+        "question": "Wie öffnet man einen Link in einem neuen Tab?",
+        "answer_1": "<a href='url' target='_blank'>",
+        "answer_2": "<a href='url' target='new'>",
+        "answer_3": "<a href='url' target='new_tab'>",
+        "answer_4": "<a href='url' new>",
+        "correct_answer": 1,
+    },
+    {
+        "question": "Wie heißt der Erfinder von HTML?",
+        "answer_1": "Tim Berners-Lee",
+        "answer_2": "Jeff Bezoz",
+        "answer_3": "Brendan Eich",
+        "answer_4": "Bill Gates",
+        "correct_answer": 1,
+    },
+];
+
+function generateStartPage(quizName){
+    let card = document.getElementById('mainCard');
+    card.innerHTML = `
+        <h1 class="mt-5">Welcome to the Awesome ${quizName} Quiz</h1>
+        <p class="card-text">Ready for the Challenge?</p>
+        
+        <button 
+            class="btn text-white position-absolute d-flex justify-content-center align-items-center" 
+            id="start-btn" onclick="showQuestion()">
+            Start Now
+        </button>
+    `
+    checkQuestionPack(quizName)
+    reset();
+}
+
+function reset(){
+    currentProgress = 0;
+    points = 0;
+    currentQuestion = 0;
+}
+
+function checkQuestionPack(name){
+    if(name == 'HTML'){
+        currentQuestionPack = htmlQuestions;
+    }else if (name == 'CSS'){
+        currentQuestionPack = cssQuestions;
+    }else{
+        currentQuestionPack = jsQuestions;
+    }
 }

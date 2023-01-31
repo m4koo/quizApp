@@ -50,17 +50,20 @@ function showQuestion(){
     progress();
 }
 
+let points = 0;
+
 function answerSelection(id){
     let selected = document.getElementById(id);
     let rightAnswer = "answer_" + htmlQuestions[currentQuestion]['correct_answer']
     console.log(rightAnswer);
     // let answer = id.slice(-1);
     if (id == rightAnswer){
-        console.log("yes");
+        // console.log("yes");
+        points++;
         selected.style.backgroundColor = "rgb(197, 244, 163)";
         animRight(selected);
     }else{
-        console.log("no");
+        // console.log("no");
         selected.style.backgroundColor = "rgb(243, 167, 166)";
         animWrong(selected);
         document.getElementById(rightAnswer).style.background = "rgb(197, 244, 163)"
@@ -152,7 +155,11 @@ function changeButton(){
 
 function nextQuestion(){
     currentQuestion++;
-    showQuestion();
+    if (currentQuestion == htmlQuestions.length){
+        generateFinalScreen();
+    }else{
+        showQuestion();
+    }
 }
 
 function escapeHtml(text) {
@@ -162,4 +169,19 @@ function escapeHtml(text) {
     };
   
     return text.replace(/[<>]/g, function(m) { return map[m]; });
+}
+
+function generateFinalScreen(){
+    let card = document.getElementById('mainCard');
+    card.innerHTML = `
+        <div class="d-flex flex-column align-items-center gap-3 mb-3" id="complete">
+            <img src="img/brain result.png">
+            <span class="fw-bold">COMPLETE HTML QUIZ</span>
+        </div>
+        <div class="d-flex justify-content-between gap-3 fw-bold mb-3">
+            <span class="text-orange">YOUR SCORE</span>
+            <p>${points}/${htmlQuestions.length}</p>
+        </div>
+        <button id="replay" class="btn btn-primary">REPLAY</button>
+    `;
 }

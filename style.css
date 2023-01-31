@@ -5,6 +5,10 @@
     --startBtn: #ed5c2e;
 }
 
+.text-orange{
+    color: rgb(229, 138, 63);
+}
+
 .answer-choice{
     min-width: 70%;
     margin-bottom: 2rem;
@@ -98,12 +102,26 @@ nav{
     font-size: 1.5rem;
 }
 
+#mainCard img{
+    width: 120px;
+    aspect-ratio: 1;
+}
+
+#complete{
+    max-width: 120px !important;
+}
+
 #start-btn{
     background-color: var(--startBtn);
     bottom: 10%;
     right: 10%;
     height: 60px;
     width: 240px;
+}
+
+#replay{
+    height: 50px;
+    width: 150px;
 }
 
 #progress{

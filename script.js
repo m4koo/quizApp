@@ -1,6 +1,6 @@
-
-
+let currentProgress = 0;
 let currentQuestion = 0;
+let points = 0;
 let currentQuestionPack;
 
 function showQuestion(){
@@ -10,24 +10,21 @@ function showQuestion(){
     progress();
 }
 
-let points = 0;
-
 function answerSelection(id){
     let selected = document.getElementById(id);
     let rightAnswer = "answer_" + currentQuestionPack[currentQuestion]['correct_answer']
     console.log(rightAnswer);
-    // let answer = id.slice(-1);
+
     if (id == rightAnswer){
-        // console.log("yes");
         points++;
         selected.style.backgroundColor = "rgb(197, 244, 163)";
         animRight(selected);
     }else{
-        // console.log("no");
         selected.style.backgroundColor = "rgb(243, 167, 166)";
         animWrong(selected);
         document.getElementById(rightAnswer).style.background = "rgb(197, 244, 163)"
     }
+    
     cancelSelection();
     changeButton();
 }
@@ -63,8 +60,6 @@ function animWrong(selected){
         selected.style.transform = "none";
     }, 500);
 }
-
-let currentProgress = 0;
 
 function progress(){
     let progressBar = document.getElementById("progress-bar");

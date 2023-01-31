@@ -68,7 +68,7 @@ let currentProgress = 0;
 
 function progress(){
     let progressBar = document.getElementById("progress-bar");
-    currentProgress += 20;
+    currentProgress += 100/currentQuestionPack.length;
 
     if (currentProgress > 100) {
         currentProgress = 100;

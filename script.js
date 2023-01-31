@@ -13,7 +13,6 @@ function showQuestion(){
 function answerSelection(id){
     let selected = document.getElementById(id);
     let rightAnswer = "answer_" + currentQuestionPack[currentQuestion]['correct_answer']
-    console.log(rightAnswer);
 
     if (id == rightAnswer){
         points++;

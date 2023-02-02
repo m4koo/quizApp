@@ -47,7 +47,7 @@ function generateFinalScreen(){
             <span class="text-orange">YOUR SCORE</span>
             <p>${points}/${currentQuestionPack.length}</p>
         </div>
-        <button id="replay" class="btn btn-primary">REPLAY</button>
+        <button id="replay" class="btn btn-primary" onclick="generateStartPage('${checkQuizName(currentQuestionPack)}')">REPLAY</button>
     `;
 }
 

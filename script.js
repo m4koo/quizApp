@@ -101,3 +101,16 @@ function checkQuestionPack(name){
         currentQuestionPack = jsQuestions;
     }
 }
+
+function checkQuizName(pack){
+    let packName;
+    if(pack == htmlQuestions){
+        packName = 'HTML';
+    }else if (pack == cssQuestions){
+        packName = 'CSS';
+    }else{
+        packName = 'JS';
+    }
+    console.log(packName);
+    return packName;
+}

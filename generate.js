@@ -43,7 +43,7 @@ function generateFinalScreen(){
             <img src="img/brain result.png">
             <span class="fw-bold">COMPLETE HTML QUIZ</span>
         </div>
-        <div class="d-flex justify-content-between gap-3 fw-bold mb-3">
+        <div class="d-flex justify-content-center gap-3 fw-bold mb-3">
             <span class="text-orange">YOUR SCORE</span>
             <p>${points}/${currentQuestionPack.length}</p>
         </div>

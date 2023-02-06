@@ -11,21 +11,24 @@ function showQuestion(){
 }
 
 function answerSelection(id){
+    checkSelected(id);
+    cancelSelection();
+    changeButton();
+}
+
+function checkSelected(id){
     let selected = document.getElementById(id);
     let rightAnswer = "answer_" + currentQuestionPack[currentQuestion]['correct_answer']
 
     if (id == rightAnswer){
         points++;
         selected.style.backgroundColor = "rgb(197, 244, 163)";
-        animRight(selected);
+        animationRight(selected);
     }else{
         selected.style.backgroundColor = "rgb(243, 167, 166)";
-        animWrong(selected);
+        animationWrong(selected);
         document.getElementById(rightAnswer).style.background = "rgb(197, 244, 163)"
     }
-    
-    cancelSelection();
-    changeButton();
 }
 
 function cancelSelection(){
@@ -34,7 +37,7 @@ function cancelSelection(){
     }
 }
 
-function animRight(selected){
+function animationRight(selected){
     selected.style.transition = "transform 300ms ease-in-out";
     selected.style.transform = "scale(1.1)";
     setTimeout(() => {
@@ -42,10 +45,17 @@ function animRight(selected){
     }, 300);
 }
 
-function animWrong(selected){
+function animationWrong(selected){
     selected.style.transition = "transform 0.3s ease-in-out";
     selected.style.transformOrigin = "center bottom";
   
+    rotateAnimation(selected);
+    setTimeout(() => {
+        selected.style.transform = "none";
+    }, 500);
+}
+
+function rotateAnimation(selected){
     for (let i = 0; i < 2; i++) {
         setTimeout(() => {
             selected.style.transform = "rotate(-10deg)";
@@ -54,10 +64,6 @@ function animWrong(selected){
             selected.style.transform = "rotate(10deg)";
         }, i * 250 + 125);
     }
-  
-    setTimeout(() => {
-        selected.style.transform = "none";
-    }, 500);
 }
 
 function progress(){

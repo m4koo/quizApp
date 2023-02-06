@@ -217,8 +217,12 @@ nav{
 
 @media (max-width: 505px) {
     #main > div{
-        width: 90% !important;
-        height: 90% !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+    nav{
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
     }
     #mainCard{
         gap: 1rem;

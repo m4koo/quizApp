@@ -232,4 +232,14 @@ nav{
     .answer-choice > span{
         height: 25px;
     }
+    #start-btn{
+        width: 200px;
+    }
+}
+
+@media (max-width: 360px) {
+    #start-btn{
+        width: 150px;
+        height: 50px;
+    }
 }

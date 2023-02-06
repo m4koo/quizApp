@@ -1,6 +1,6 @@
 function generateQuestionHTML(id){
     id.innerHTML =`
-    <h2 class="mb-5 fw-bold">${escapeHtml(currentQuestionPack[currentQuestion]['question'])}</h2>
+    <h2 class="mb-5 fw-bold" id="question">${escapeHtml(currentQuestionPack[currentQuestion]['question'])}</h2>
     <div class="d-flex gap-4 answer-choice" id="answer_1" onclick="answerSelection('answer_1')">
         <span>A</span>
         <p>${escapeHtml(currentQuestionPack[currentQuestion]['answer_1'])}</p>
@@ -18,7 +18,7 @@ function generateQuestionHTML(id){
         <p>${escapeHtml(currentQuestionPack[currentQuestion]['answer_4'])}</p>
     </div>
     <div id="progress" class="d-flex justify-content-evenly align-items-center">
-        <span class="text-secondary fs-5">${currentQuestion + 1} von ${currentQuestionPack.length}</span>
+        <span class="text-secondary fs-5">${currentQuestion + 1}/${currentQuestionPack.length}</span>
         <div id="progress-container">
             <div id="progress-bar"></div>
         </div>
